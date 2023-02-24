@@ -1,0 +1,8 @@
+Assets/Fonts/*
+Assets/Imported/*
+Library/*
+
+*.meta
+*.png
+*.jpeg
+*.jpg
