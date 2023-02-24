@@ -108,7 +108,8 @@ public class UnitMovement : MonoBehaviour {
         if(info.collider.gameObject == gameObject) {
             
             // Clicked on self...
-            // TODO...
+            var ui = UIManager.ConnectUnitInventory();
+            ui.OnLoad(GetComponent<Unit>());
 
         } else if(info.collider.CompareTag("Building")) {
             

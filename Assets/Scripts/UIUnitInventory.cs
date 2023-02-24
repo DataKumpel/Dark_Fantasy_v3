@@ -6,8 +6,15 @@ public class UIUnitInventory : MonoBehaviour {
     public List<UIUnitInventorySlot> slots;
 
     public void OnLoad(Unit unit) {
-        for(int i = 0; i < unit.max_items; i++) {
-            slots[i].SetItem(unit.items[i]);
+        gameObject.SetActive(true);
+        for(int i = 0; i < unit.items.Count; i++) {
+            if(unit.items[i] != null) {
+                slots[i].SetItem(unit.items[i]);
+            }
+        }
+
+        for(int i = unit.items.Count; i < slots.Count; i++) {
+            slots[i].Clear();
         }
     }
 }

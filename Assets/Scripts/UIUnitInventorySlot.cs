@@ -11,4 +11,9 @@ public class UIUnitInventorySlot : MonoBehaviour {
         item_image.sprite = item.item_img;
         amount_display.text = item.quantity.ToString();
     }
+
+    public void Clear() {
+        item_image.sprite = null;
+        amount_display.text = "";
+    }
 }
