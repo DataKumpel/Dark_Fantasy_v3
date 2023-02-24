@@ -1,8 +1,18 @@
 Assets/Fonts/*
 Assets/Imported/*
+Assets/Materials/*
+Assets/Models/*
+Assets/prefabs/*
+Assets/Shaders/*
+Assets/Textures/*
 Library/*
+Logs/*
+obj/*
+Temp/*
+.vs/*
 
 *.meta
 *.png
 *.jpeg
 *.jpg
+*.asset
