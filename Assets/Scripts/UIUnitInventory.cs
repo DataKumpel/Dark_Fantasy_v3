@@ -17,4 +17,8 @@ public class UIUnitInventory : MonoBehaviour {
             slots[i].Clear();
         }
     }
+
+    public void OnExit() {
+        gameObject.SetActive(false);
+    }
 }
