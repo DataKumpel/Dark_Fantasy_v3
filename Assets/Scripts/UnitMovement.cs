@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class UnitMovement : MonoBehaviour {
     public GameObject way_marker_prefab;
+    public float focus_zoom = 7.5f;
 
     [Header("Path Marker Options")]
     public bool use_path_markers = true;
@@ -20,6 +21,7 @@ public class UnitMovement : MonoBehaviour {
 
     [HideInInspector] public bool is_moving = false;
     [HideInInspector] public bool is_exhausted = false;
+    [HideInInspector] public bool in_inventory_ui = false;
 
     private NavMeshAgent agent;
     private NavMeshPath path;
@@ -36,6 +38,7 @@ public class UnitMovement : MonoBehaviour {
     private GameObject target;
     private bool is_facing = false;
     private Quaternion target_rotation;
+    private float old_zoom;
 
     public void Start() {
         agent = GetComponent<NavMeshAgent>();
@@ -109,7 +112,14 @@ public class UnitMovement : MonoBehaviour {
             
             // Clicked on self...
             var ui = UIManager.ConnectUnitInventory();
+            cam_movement.FocusOn(gameObject, false);
+            old_zoom = cam_movement.GetZoom();
+            cam_movement.SetZoom(focus_zoom);
             ui.OnLoad(GetComponent<Unit>());
+            in_inventory_ui = true;
+
+            // To prevent the unit from being deselected by exiting the inventory:
+            gameObject.GetComponent<HighlightEffect>().enabled = false;
 
         } else if(info.collider.CompareTag("Building")) {
             
@@ -267,6 +277,19 @@ public class UnitMovement : MonoBehaviour {
             if(Quaternion.Angle(transform.rotation, target_rotation) < 1f) {
                 is_facing = false;
             }
+        }
+
+        // When we are inspecting the units inventory or stats:
+        if(in_inventory_ui) {
+            // Exit the inventory by right clicking or ESC:
+            if(mouse.rightButton.wasPressedThisFrame || keyboard.escapeKey.wasPressedThisFrame) {
+                var ui = UIManager.ConnectUnitInventory();
+                ui.OnExit();
+                cam_movement.SetZoom(old_zoom);
+                in_inventory_ui = false;
+                gameObject.GetComponent<HighlightEffect>().enabled = true;
+            }
+            return;
         }
 
         // Following inputs are only allowed once this unit has been selected:
