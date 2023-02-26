@@ -91,7 +91,7 @@ public class Unit : MonoBehaviour {
         }
     }
 
-    public void Collect(Collectable item) {
+    public bool Collect(Collectable item) {
         // Look if we can add the collected item to an 
         // existing stack:
         foreach(var inv_item in items) {
@@ -99,9 +99,10 @@ public class Unit : MonoBehaviour {
                 // Skip full stacks:
                 if(inv_item.GetDifference() == 0) continue;
                 
-                if(inv_item.GetDifference() > item.quantity) {
+                if(inv_item.GetDifference() >= item.quantity) {
                     // Item quantity fits, so add to stack:
                     inv_item.quantity += item.quantity;
+                    return true;
                 } else {
                     // Item quantity doesn't fit, so create 
                     // another stack:
@@ -111,20 +112,23 @@ public class Unit : MonoBehaviour {
                     // Check if we can add another item:
                     if(items.Count < max_items) {
                         items.Add(item);
+                        return true;
                     } else {
                         Debug.Log("Inventory full...");
+                        return false;
                     }
                 }
-                return;
             }
         }
 
         // If there was no item with this name in the inventory,
-        //  try adding it:
+        // try adding it:
         if(items.Count < max_items) {
             items.Add(item);
+            return true;
         } else {
             Debug.Log("Inventory full...");
+            return false;
         }
     }
 

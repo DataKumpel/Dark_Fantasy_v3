@@ -20,16 +20,14 @@ public class Resource : MonoBehaviour {
         selection_manager = UnitSelectionManager.Connect();
     }
 
-    public void Collect(Unit collector) {
+    public bool Collect(Unit collector) {
         var real_amount = fixed_amount;
         if(random_amount) {
             real_amount = Random.Range(range_amount_lowest, 
                                        range_amount_highest + 1);
         }
-        // Deprecated: Resources are now stored locally within units...
-        //collector.owner.AddResource(type, real_amount);
         collectable.quantity = real_amount;
-        collector.Collect(collectable);
+        return collector.Collect(collectable);
     }
 
     public Vector3 GetMarkerPos() {
@@ -38,8 +36,10 @@ public class Resource : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other) {
         if(other.gameObject == selection_manager.current_selection && is_target) {
-            Collect(other.GetComponent<Unit>());
-            Destroy(gameObject);
+            // Only destroy the resource object if collected:
+            if(Collect(other.GetComponent<Unit>())) {
+                Destroy(gameObject);
+            }
         }
     }
 }
