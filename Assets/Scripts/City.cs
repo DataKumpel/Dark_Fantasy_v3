@@ -307,6 +307,11 @@ public class City : Building {
         }
     }
 
+    public void UnitEnterBuilding(Unit unit) {
+        // A unit enters the city and opens the city-unit interface:
+        
+    }
+
     public void ExitBuilding() {
         cam_movemement.SetZoom(cam_zoom_backup);
         // TODO: Maybe focus on the entrance trigger afterwards...
