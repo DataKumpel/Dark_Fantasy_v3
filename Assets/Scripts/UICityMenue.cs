@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class UICityMenue : MonoBehaviour {
     public Text name_display;
@@ -18,6 +19,7 @@ public class UICityMenue : MonoBehaviour {
 
     private GameObject active_group;
     private City current_city;
+    private Mouse mouse = Mouse.current;
 
     public void Start() {
         active_group = main_group;
@@ -186,6 +188,14 @@ public class UICityMenue : MonoBehaviour {
         resource_display.HideCosts();
         resource_display.gameObject.SetActive(false);
         gameObject.SetActive(false);
+    }
+
+    public void Update() {
+        if(gameObject.activeSelf) {
+            if(mouse.rightButton.wasPressedThisFrame) {
+                OnExit();
+            }
+        }
     }
 }
 
