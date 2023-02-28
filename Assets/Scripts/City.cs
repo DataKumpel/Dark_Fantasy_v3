@@ -72,6 +72,16 @@ public class City : Building {
     [SerializeReference] public CityDefence citadel2 = new();
     [SerializeReference] public CityDefence stronghold2 = new();
 
+    [Header("Recruitation")]
+    public Creature creature_i_1;
+    public Creature creature_i_2;
+    public Creature creature_ii_1;
+    public Creature creature_ii_2;
+    public Creature creature_iii_1;
+    public Creature creature_iii_2;
+    public Creature creature_iv_1;
+    public Creature creature_iv_2;
+
     [HideInInspector] public bool has_built_this_round = false;
     [HideInInspector] public List<CityBuilding> buildings = new();
     
