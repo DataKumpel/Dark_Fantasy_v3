@@ -2899,6 +2899,155 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2803071258715848796, guid: c732f3de25f889948a178dd12f7e8908, type: 3}
   m_PrefabInstance: {fileID: 360678273}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &364556028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 364556033}
+  - component: {fileID: 364556032}
+  - component: {fileID: 364556031}
+  - component: {fileID: 364556030}
+  - component: {fileID: 364556029}
+  m_Layer: 0
+  m_Name: Creature_test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &364556029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364556028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 516a7f64020b62742af57c8134eb0d5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creature_name: TestCreature
+  tier: 0
+  number: 1
+  representation: {fileID: 364556028}
+  icon: {fileID: 21300000, guid: 6509adb73ba1de04d898264b898cdf2e, type: 3}
+  stats:
+    rid: 7481777043787743232
+  costs:
+    rid: 7481777043787743233
+  references:
+    version: 2
+    RefIds:
+    - rid: 7481777043787743232
+      type: {class: CreatureStats, ns: , asm: Assembly-CSharp}
+      data:
+        attack: 4
+        defense: 4
+        damage_min: 1
+        damage_max: 3
+        spellpower: 0
+        resistence: 0
+        max_health: 10
+        cur_health: 10
+        max_mana: 0
+        cur_mana: 0
+        speed: 30
+    - rid: 7481777043787743233
+      type: {class: CreatureCosts, ns: , asm: Assembly-CSharp}
+      data:
+        wood: 0
+        stone: 0
+        iron: 1
+        food: 1
+        void_crystal: 0
+        pure_silver: 0
+        gun_powder: 0
+        mana_essence: 0
+        sacrificial_blood: 0
+--- !u!136 &364556030
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364556028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &364556031
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364556028}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &364556032
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364556028}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &364556033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364556028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.4, y: 11, z: -22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &364649853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3524,6 +3673,10 @@ PrefabInstance:
       propertyPath: owner
       value: 
       objectReference: {fileID: 1757658786}
+    - target: {fileID: 6389119056566367141, guid: 46e37ece67016fc42925fc3c972d881b, type: 3}
+      propertyPath: army.Array.data[0]
+      value: 
+      objectReference: {fileID: 364556029}
     - target: {fileID: 8964184986352057800, guid: 46e37ece67016fc42925fc3c972d881b, type: 3}
       propertyPath: use_path_markers
       value: 1
@@ -11086,6 +11239,22 @@ PrefabInstance:
     - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
       propertyPath: city_name
       value: Test City
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: managedReferences[7481776455204208672].is_built
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: managedReferences[7481776455204208673].is_built
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: managedReferences[7481776455204208688].is_built
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: managedReferences[7481776455204208689].is_built
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
       propertyPath: managedReferences[7481776455204208672].building_name
