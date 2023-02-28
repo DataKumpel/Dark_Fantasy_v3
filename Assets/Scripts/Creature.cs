@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Creature : MonoBehaviour {
     public string creature_name = string.Empty;
     public CreatureTier tier = CreatureTier.tier_i;
     public int number = 1;
+    public GameObject representation;
+    public Sprite icon;
 
     [SerializeReference] public CreatureStats stats = new();
+    [SerializeReference] public CreatureCosts costs = new();
 }
 
 
@@ -23,6 +27,19 @@ public class CreatureStats {
     public int max_mana = 0;
     public int cur_mana = 0;
     public int speed = 0;
+}
+
+
+public class CreatureCosts {
+    public int wood = 0;
+    public int stone = 0;
+    public int iron = 0;
+    public int food = 0;
+    public int void_crystal = 0;
+    public int pure_silver = 0;
+    public int gun_powder = 0;
+    public int mana_essence = 0;
+    public int sacrificial_blood = 0;
 }
 
 
