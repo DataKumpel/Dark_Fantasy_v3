@@ -9,10 +9,7 @@ public class Unit : MonoBehaviour {
     public float max_walk_distance = 10f;
 
     [Header("Army")]
-    public int max_front = 4;
-    public List<Creature> army_front = new();
-    public int max_back = 4;
-    public List<Creature> army_back = new();
+    public Creature[] army = new Creature[8];
     
     [Header("Torches")]
     // TODO: Change torches to be a collectable in inventory???
