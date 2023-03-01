@@ -14,7 +14,7 @@ public class Creature : MonoBehaviour {
     [SerializeReference] public CreatureCosts costs = new();
 }
 
-
+[System.Serializable]
 public class CreatureStats {
     public int attack = 0;
     public int defense = 0;
@@ -27,9 +27,10 @@ public class CreatureStats {
     public int max_mana = 0;
     public int cur_mana = 0;
     public int speed = 0;
+    public int reproduction = 0;  // Weekly (8 days)
 }
 
-
+[System.Serializable]
 public class CreatureCosts {
     public int wood = 0;
     public int stone = 0;
