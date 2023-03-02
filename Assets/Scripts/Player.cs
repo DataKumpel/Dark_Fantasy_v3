@@ -137,7 +137,7 @@ public class Player : MonoBehaviour {
         foreach(var builing in buildings) {
             var city = builing.GetComponent<City>();
             if(city != null) {
-                city.has_built_this_round = false;
+                city.Refresh();
             }
         }
     }
