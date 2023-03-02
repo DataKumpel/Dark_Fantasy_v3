@@ -9,6 +9,11 @@ public class City : Building {
     public GameObject focus_point;
     public float zoom_value = 20f;
 
+    [Header("Armies")]
+    // Those objects require to have a unit component!
+    public GameObject army_in_town;
+    public GameObject army_visitor;
+
     [Header("Resources")]
     public int wood = 0;
     public int stone = 0;
@@ -73,16 +78,27 @@ public class City : Building {
     [SerializeReference] public CityDefence stronghold2 = new();
 
     [Header("Recruitation")]
-    public Creature creature_i_1;
-    public Creature creature_i_2;
-    public Creature creature_ii_1;
-    public Creature creature_ii_2;
-    public Creature creature_iii_1;
-    public Creature creature_iii_2;
-    public Creature creature_iv_1;
-    public Creature creature_iv_2;
+    public Creature recr_creature_i_1;
+    public Creature recr_creature_i_2;
+    public Creature recr_creature_ii_1;
+    public Creature recr_creature_ii_2;
+    public Creature recr_creature_iii_1;
+    public Creature recr_creature_iii_2;
+    public Creature recr_creature_iv_1;
+    public Creature recr_creature_iv_2;
+
+    [Header("Creature Stocks")]
+    public float creature_i_1_stock = 0f;
+    public float creature_i_2_stock = 0f;
+    public float creature_ii_1_stock = 0f;
+    public float creature_ii_2_stock = 0f;
+    public float creature_iii_1_stock = 0f;
+    public float creature_iii_2_stock = 0f;
+    public float creature_iv_1_stock = 0f;
+    public float creature_iv_2_stock = 0f;
 
     [HideInInspector] public bool has_built_this_round = false;
+    [HideInInspector] public bool has_recruited_this_round = false;
     [HideInInspector] public List<CityBuilding> buildings = new();
     
     private UICityMenue city_menue;
@@ -173,6 +189,7 @@ public class City : Building {
     }
 
     public void AdjustLightRange() {
+        // TODO: Hard coded variant to variables in inspector pls!
         reveal_radius = 10;
         if(camp.is_built) reveal_radius = 20;
         if(village.is_built) reveal_radius = 30;
@@ -195,9 +212,6 @@ public class City : Building {
             case ResourceType.sacrificial_blood: sacrificial_blood += amnt; break;
             default: break;
         }
-
-        // Update Resource Display:
-        // TODO...
     }
 
     public bool CanBuild(CityBuildingCost costs) {
@@ -246,11 +260,31 @@ public class City : Building {
 
     public void Build(CityBuildingType type) {
         switch(type) {
-            case CityBuildingType.camp: PayBuild(camp); break;
-            case CityBuildingType.village: PayBuild(village); break;
-            case CityBuildingType.town: PayBuild(town); break;
-            case CityBuildingType.city: PayBuild(city); break;
-            case CityBuildingType.monopolis: PayBuild(monopolis); break;
+            case CityBuildingType.camp: {
+                PayBuild(camp); 
+                AdjustLightRange();
+                break;
+            }
+            case CityBuildingType.village: {
+                PayBuild(village);
+                AdjustLightRange();
+                break;
+            }
+            case CityBuildingType.town: {
+                PayBuild(town); 
+                AdjustLightRange();
+                break;
+            }
+            case CityBuildingType.city: {
+                PayBuild(city); 
+                AdjustLightRange();
+                break;
+            }
+            case CityBuildingType.monopolis: {
+                PayBuild(monopolis); 
+                AdjustLightRange();
+                break;
+            }
             case CityBuildingType.mage_tower_lvl_1: PayBuild(mage_tower_lvl_1); break;
             case CityBuildingType.mage_tower_lvl_2: PayBuild(mage_tower_lvl_2); break;
             case CityBuildingType.mage_tower_lvl_3: PayBuild(mage_tower_lvl_3); break;
@@ -263,20 +297,52 @@ public class City : Building {
             case CityBuildingType.market: PayBuild(market); break;
             case CityBuildingType.hero_altar: PayBuild(hero_altar); break;
             case CityBuildingType.district_i: PayBuild(district_i); break;
-            case CityBuildingType.creatures_i_1: PayBuild(creatures_i_1); break;
-            case CityBuildingType.creatures_i_2: PayBuild(creatures_i_2); break;
+            case CityBuildingType.creatures_i_1: {
+                PayBuild(creatures_i_1);
+                creature_i_1_stock += recr_creature_i_1.stats.basic_stock;
+                break;
+            }
+            case CityBuildingType.creatures_i_2: {
+                PayBuild(creatures_i_2); 
+                creature_i_2_stock += recr_creature_i_2.stats.basic_stock;
+                break;
+            }
             case CityBuildingType.basic_resources_i: PayBuild(basic_resources_i); break;
             case CityBuildingType.district_ii: PayBuild(district_ii); break;
-            case CityBuildingType.creatures_ii_1: PayBuild(creatures_ii_1); break;
-            case CityBuildingType.creatures_ii_2: PayBuild(creatures_ii_2); break;
+            case CityBuildingType.creatures_ii_1: {
+                PayBuild(creatures_ii_1);
+                creature_ii_1_stock += recr_creature_ii_1.stats.basic_stock;
+                break;
+            }
+            case CityBuildingType.creatures_ii_2: {
+                PayBuild(creatures_ii_2);
+                creature_ii_2_stock += recr_creature_ii_2.stats.basic_stock;
+                break;
+            }
             case CityBuildingType.basic_resources_ii: PayBuild(basic_resources_ii); break;
             case CityBuildingType.district_iii: PayBuild(district_iii); break;
-            case CityBuildingType.creatures_iii_1: PayBuild(creatures_iii_1); break;
-            case CityBuildingType.creatures_iii_2: PayBuild(creatures_iii_2); break;
+            case CityBuildingType.creatures_iii_1: {
+                PayBuild(creatures_iii_1);
+                creature_iii_1_stock += recr_creature_iii_1.stats.basic_stock;
+                break;
+            }
+            case CityBuildingType.creatures_iii_2: {
+                PayBuild(creatures_iii_2); 
+                creature_iii_2_stock += recr_creature_iii_2.stats.basic_stock;
+                break;
+            }
             case CityBuildingType.special_resources_i: PayBuild(special_resources_i); break;
             case CityBuildingType.district_iv: PayBuild(district_iv); break;
-            case CityBuildingType.creatures_iv_1: PayBuild(creatures_iv_1); break;
-            case CityBuildingType.creatures_iv_2: PayBuild(creatures_iv_2); break;
+            case CityBuildingType.creatures_iv_1: {
+                PayBuild(creatures_iv_1);
+                creature_iv_1_stock += recr_creature_iv_1.stats.basic_stock;
+                break;
+            }
+            case CityBuildingType.creatures_iv_2: {
+                PayBuild(creatures_iv_2);
+                creature_iv_2_stock += recr_creature_iv_2.stats.basic_stock;
+                break;
+            }
             case CityBuildingType.special_resources_ii: PayBuild(special_resources_ii); break;
             case CityBuildingType.faction_special: PayBuild(faction_special); break;
             case CityBuildingType.fort: PayDefenseBuild(fort2); break;
@@ -284,6 +350,64 @@ public class City : Building {
             case CityBuildingType.stronghold: PayDefenseBuild(stronghold2); break;
         }
         has_built_this_round = true;
+    }
+
+    public void Recruit(CreatureType type, int amnt) {
+        var army_unit = army_in_town.GetComponent<Unit>();
+        try {
+            switch(type) {
+                case CreatureType.creature_tier_i_1: {
+                    army_unit.AddCreature(recr_creature_i_1, amnt); 
+                    break;
+                }
+                case CreatureType.creature_tier_i_2: {
+                    army_unit.AddCreature(recr_creature_i_2, amnt); 
+                    break;
+                }
+                case CreatureType.creature_tier_ii_1: {
+                    army_unit.AddCreature(recr_creature_ii_1, amnt); 
+                    break;
+                }
+                case CreatureType.creature_tier_ii_2: {
+                    army_unit.AddCreature(recr_creature_ii_2, amnt); 
+                    break;
+                }
+                case CreatureType.creature_tier_iii_1: {
+                    army_unit.AddCreature(recr_creature_iii_1, amnt); 
+                    break;
+                }
+                case CreatureType.creature_tier_iii_2: {
+                    army_unit.AddCreature(recr_creature_iii_2, amnt); 
+                    break;
+                }
+                case CreatureType.creature_tier_iv: {
+                    if(creatures_iv_1.is_built) {
+                        army_unit.AddCreature(recr_creature_iv_1, amnt);
+                    } else if(creatures_iv_2.is_built) {
+                        army_unit.AddCreature(recr_creature_iv_2, amnt);
+                    }
+                    break;
+                }
+                default: break;
+            }
+        } catch(ArmyFullException) {
+            Debug.Log("No space to recruit another unit!");
+        }
+    }
+
+    public void Refresh() {
+        has_built_this_round = false;
+        has_recruited_this_round = false;
+
+        // Add Creatures to stock:
+        if(creatures_i_1.is_built) creature_i_1_stock += recr_creature_i_1.stats.reproduction / 8f;
+        if(creatures_i_2.is_built) creature_i_2_stock += recr_creature_i_2.stats.reproduction / 8f;
+        if(creatures_ii_1.is_built) creature_ii_1_stock += recr_creature_ii_1.stats.reproduction / 8f;
+        if(creatures_ii_2.is_built) creature_ii_2_stock += recr_creature_ii_2.stats.reproduction / 8f;
+        if(creatures_iii_1.is_built) creature_iii_1_stock += recr_creature_iii_1.stats.reproduction / 8f;
+        if(creatures_iii_2.is_built) creature_iii_2_stock += recr_creature_iii_2.stats.reproduction / 8f;
+        if(creatures_iv_1.is_built) creature_iv_1_stock += recr_creature_iv_1.stats.reproduction / 8f;
+        if(creatures_iv_2.is_built) creature_iv_2_stock += recr_creature_iv_2.stats.reproduction / 8f;
     }
 
     public void CamToFocus() {
@@ -428,4 +552,14 @@ public enum CityBuildingType {
     fort,
     citadel,
     stronghold,
+}
+
+public enum CreatureType {
+    creature_tier_i_1,
+    creature_tier_i_2,
+    creature_tier_ii_1,
+    creature_tier_ii_2,
+    creature_tier_iii_1,
+    creature_tier_iii_2,
+    creature_tier_iv,
 }
