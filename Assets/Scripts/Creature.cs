@@ -28,6 +28,7 @@ public class CreatureStats {
     public int cur_mana = 0;
     public int speed = 0;
     public int reproduction = 0;  // Weekly (8 days)
+    public int basic_stock = 0;
 }
 
 [System.Serializable]
