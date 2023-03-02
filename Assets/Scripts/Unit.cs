@@ -130,6 +130,21 @@ public class Unit : MonoBehaviour {
         }
     }
 
+    public void AddCreature(Creature creature, int amnt) {
+        // Look, if there is already a same name creature in the army:
+        foreach(var army_creature in army) {
+            if(army_creature.creature_name == creature.creature_name) {
+                army_creature.number += amnt;
+                return;
+            }
+        }
+
+        // If no fitting creature was found, try to create a new one:
+        if(army.Count == max_army_size) throw new ArmyFullException();
+
+        
+    }
+
     public void Update() {
         if(movement.is_moving) {
             walk_distance -= Vector3.Distance(prev_pos, 
@@ -142,4 +157,15 @@ public class Unit : MonoBehaviour {
             }
         }
     }
+}
+
+[System.Serializable]
+public class ArmyFullException : System.Exception
+{
+    public ArmyFullException() { }
+    public ArmyFullException(string message) : base(message) { }
+    public ArmyFullException(string message, System.Exception inner) : base(message, inner) { }
+    protected ArmyFullException(
+        System.Runtime.Serialization.SerializationInfo info,
+        System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
 }
