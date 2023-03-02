@@ -25454,6 +25454,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2365538587304322871, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: m_Name
+      value: ArmyInTown
+      objectReference: {fileID: 0}
     - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
       propertyPath: owner
       value: 
@@ -25840,7 +25844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1376657298
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32559,7 +32563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1743653409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32735,6 +32739,13 @@ MonoBehaviour:
         fort_build_btn: {fileID: 1255664293}
         citadel_build_btn: {fileID: 1420755268}
         stronghold_build_btn: {fileID: 940672869}
+        creature_i_1_recruite_btn: {fileID: 0}
+        creature_i_2_recruite_btn: {fileID: 0}
+        creature_ii_1_recruite_btn: {fileID: 0}
+        creature_ii_2_recruite_btn: {fileID: 0}
+        creature_iii_1_recruite_btn: {fileID: 0}
+        creature_iii_2_recruite_btn: {fileID: 0}
+        creature_iv_recruite_btn: {fileID: 0}
     - rid: 7481776636728705024
       type: {class: UICityMenueItems, ns: , asm: Assembly-CSharp}
       data:
@@ -42298,7 +42309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2907529046377084119, guid: 66f5b2f45139cd04abbf27c03a27f09a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f5b2f45139cd04abbf27c03a27f09a, type: 3}
