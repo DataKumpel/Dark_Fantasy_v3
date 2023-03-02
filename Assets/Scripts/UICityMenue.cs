@@ -34,29 +34,10 @@ public class UICityMenue : MonoBehaviour {
     }
 
     public void ConstructBuilding(CityBuildingType type) {
-        switch(type) {
-            case(CityBuildingType.monopolis):
-            case(CityBuildingType.city):
-            case(CityBuildingType.town):
-            case(CityBuildingType.village):
-            case(CityBuildingType.camp): {
-                current_city.Build(type);
-                
-                // Every base building increases the reveal lights range:
-                current_city.AdjustLightRange();
+        current_city.Build(type);
 
-                // Change the appearance of the build button to already built:
-                ui_buttons.ChangeButtonSprite(type, already_built_sprite);
-                break;
-            }
-            default: {
-                current_city.Build(type);
-
-                // Change the appearance of the build button to already built:
-                ui_buttons.ChangeButtonSprite(type, already_built_sprite);
-                break;
-            }
-        }
+        // Change the appearance of the build button to already built:
+        ui_buttons.ChangeButtonSprite(type, already_built_sprite);
 
         // There can only be one construction per turn, 
         // so disable all buttons after construction:
@@ -404,11 +385,20 @@ public class UICityMenueButtons {
     public Button citadel_build_btn;
     public Button stronghold_build_btn;
 
+    [Header("Recruitation")]
+    public Button creature_i_1_recruite_btn;
+    public Button creature_i_2_recruite_btn;
+    public Button creature_ii_1_recruite_btn;
+    public Button creature_ii_2_recruite_btn;
+    public Button creature_iii_1_recruite_btn;
+    public Button creature_iii_2_recruite_btn;
+    public Button creature_iv_recruite_btn;
+
     public void ChangeButtonSprite(CityBuildingType type, Sprite sprite) {
         var btn_img = GetButtonFromType(type)
-            .transform
-            .GetChild(0)
-            .GetComponent<Image>();
+                        .transform
+                        .GetChild(0)
+                        .GetComponent<Image>();
         btn_img.sprite = sprite;
     }
 
@@ -452,46 +442,6 @@ public class UICityMenueButtons {
             case CityBuildingType.stronghold: return stronghold_build_btn;
             default: return camp_build_btn;  // Required but never reached...
         }
-    }
-
-    public void ActivateAllBuildButtons(bool val) {
-        // TODO: Is this method needed any longer anywhere? Maybe delete it? Save some space??? :D 
-        camp_build_btn.interactable = val;
-        village_build_btn.interactable = val;
-        town_build_btn.interactable = val;
-        city_build_btn.interactable = val;
-        monopolis_build_btn.interactable = val;
-        mage_tower_lvl_1_build_btn.interactable = val;
-        mage_tower_lvl_2_build_btn.interactable = val;
-        mage_tower_lvl_3_build_btn.interactable = val;
-        mage_tower_lvl_4_build_btn.interactable = val;
-        mage_tower_lvl_5_build_btn.interactable = val;
-        mage_tower_lvl_6_build_btn.interactable = val;
-        mage_tower_lvl_7_build_btn.interactable = val;
-        mage_tower_lvl_8_build_btn.interactable = val;
-        blacksmith_build_btn.interactable = val;
-        market_build_btn.interactable = val;
-        hero_altar_build_btn.interactable = val;
-        district_i_build_btn.interactable = val;
-        creatures_i_1_build_btn.interactable = val;
-        creatures_i_2_build_btn.interactable = val;
-        basic_resources_i_build_btn.interactable = val;
-        district_ii_build_btn.interactable = val;
-        creatures_ii_1_build_btn.interactable = val;
-        creatures_ii_2_build_btn.interactable = val;
-        basic_resources_ii_build_btn.interactable = val;
-        district_iii_build_btn.interactable = val;
-        creatures_iii_1_build_btn.interactable = val;
-        creatures_iii_2_build_btn.interactable = val;
-        special_resources_i_build_btn.interactable = val;
-        district_iv_build_btn.interactable = val;
-        creatures_iv_1_build_btn.interactable = val;
-        creatures_iv_2_build_btn.interactable = val;
-        special_resources_ii_build_btn.interactable = val;
-        faction_special_build_btn.interactable = val;
-        fort_build_btn.interactable = val;
-        citadel_build_btn.interactable = val;
-        stronghold_build_btn.interactable = val;
     }
 
     public void UpdateDefenceButtonStatus(City city, CityDefence city_defence, 
