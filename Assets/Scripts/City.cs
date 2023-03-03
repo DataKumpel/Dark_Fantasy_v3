@@ -357,34 +357,42 @@ public class City : Building {
         try {
             switch(type) {
                 case CreatureType.creature_tier_i_1: {
-                    army_unit.AddCreature(recr_creature_i_1, amnt); 
+                    army_unit.AddCreature(recr_creature_i_1, amnt);
+                    creature_i_1_stock -= amnt;
                     break;
                 }
                 case CreatureType.creature_tier_i_2: {
-                    army_unit.AddCreature(recr_creature_i_2, amnt); 
+                    army_unit.AddCreature(recr_creature_i_2, amnt);
+                    creature_i_2_stock -= amnt;
                     break;
                 }
                 case CreatureType.creature_tier_ii_1: {
-                    army_unit.AddCreature(recr_creature_ii_1, amnt); 
+                    army_unit.AddCreature(recr_creature_ii_1, amnt);
+                    creature_ii_1_stock -= amnt;
                     break;
                 }
                 case CreatureType.creature_tier_ii_2: {
-                    army_unit.AddCreature(recr_creature_ii_2, amnt); 
+                    army_unit.AddCreature(recr_creature_ii_2, amnt);
+                    creature_ii_2_stock -= amnt;
                     break;
                 }
                 case CreatureType.creature_tier_iii_1: {
-                    army_unit.AddCreature(recr_creature_iii_1, amnt); 
+                    army_unit.AddCreature(recr_creature_iii_1, amnt);
+                    creature_iii_1_stock -= amnt;
                     break;
                 }
                 case CreatureType.creature_tier_iii_2: {
-                    army_unit.AddCreature(recr_creature_iii_2, amnt); 
+                    army_unit.AddCreature(recr_creature_iii_2, amnt);
+                    creature_iii_2_stock -= amnt;
                     break;
                 }
                 case CreatureType.creature_tier_iv: {
                     if(creatures_iv_1.is_built) {
                         army_unit.AddCreature(recr_creature_iv_1, amnt);
+                        creature_iv_1_stock -= amnt;
                     } else if(creatures_iv_2.is_built) {
                         army_unit.AddCreature(recr_creature_iv_2, amnt);
+                        creature_iv_2_stock -= amnt;
                     }
                     break;
                 }
