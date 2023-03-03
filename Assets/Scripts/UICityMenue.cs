@@ -496,6 +496,10 @@ public class UICityMenueButtons {
         UpdateDefenceButtonStatus(city, city.citadel2, can_build, cannot_build, already_built, wait_built);
         UpdateDefenceButtonStatus(city, city.stronghold2, can_build, cannot_build, already_built, wait_built);
     }
+
+    public void UpdateRecruitButtons(City city) {
+        // TODO...
+    }
 }
 
 //===== UI CITY MENUE TEXTS ===========================================================================================
@@ -553,6 +557,15 @@ public class UICityMenueTexts {
     public Text citadel_disp;
     public Text stronghold_disp;
 
+    [Header("Recruitation")]
+    public Text creature_i_1_disp;
+    public Text creature_i_2_disp;
+    public Text creature_ii_1_disp;
+    public Text creature_ii_2_disp;
+    public Text creature_iii_1_disp;
+    public Text creature_iii_2_disp;
+    public Text creature_iv_disp;
+
     public void UpdateTextDisplays(City city) {
         camp_disp.text = city.camp.building_name;
         village_disp.text = city.village.building_name;
@@ -590,5 +603,16 @@ public class UICityMenueTexts {
         fort_disp.text = city.fort2.building_name;
         citadel_disp.text = city.citadel2.building_name;
         stronghold_disp.text = city.stronghold2.building_name;
+        creature_i_1_disp.text = city.recr_creature_i_1.creature_name;
+        creature_i_2_disp.text = city.recr_creature_i_2.creature_name;
+        creature_ii_1_disp.text = city.recr_creature_i_1.creature_name;
+        creature_ii_2_disp.text = city.recr_creature_i_2.creature_name;
+        creature_iii_1_disp.text = city.recr_creature_i_1.creature_name;
+        creature_iii_2_disp.text = city.recr_creature_i_2.creature_name;
+        if(city.creatures_iv_1.is_built) {
+            creature_iv_disp.text = city.recr_creature_iv_1.creature_name;
+        } else {
+            creature_iv_disp.text = city.recr_creature_iv_2.creature_name;
+        }
     }
 }
