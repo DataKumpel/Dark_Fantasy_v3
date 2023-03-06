@@ -7,12 +7,22 @@ using UnityEngine.InputSystem;
 public class UICityMenue : MonoBehaviour {
     public Text name_display;
     public GameObject main_group;
+    
+    [Header("Building Sprites")]
     public Sprite can_build_sprite;
     public Sprite cannot_build_sprite;
     public Sprite already_built_sprite;
     public Sprite wait_build_sprite;
+
+    [Header("Recruitation Sprites")]
+    public Sprite can_recruit_sprite;
+    public Sprite cannot_recruit_sprite;
+    public Sprite soldout_sprite;
+
+    [Header("Resource Display")]
     public UIResourceDisplay resource_display;
 
+    [Header("UI Groups")]
     [SerializeReference] public UICityMenueTexts ui_texts = new();
     [SerializeReference] public UICityMenueButtons ui_buttons = new();
     [SerializeReference] public UICityMenueItems ui_items = new();
@@ -132,6 +142,9 @@ public class UICityMenue : MonoBehaviour {
     public void UpdateAllButtons() => ui_buttons.UpdateAllButtonStatus(current_city, can_build_sprite, 
                                                                        cannot_build_sprite, already_built_sprite, 
                                                                        wait_build_sprite);
+    public void UpdateAllRecruitButtons() => ui_buttons.UpdateAllRecruitButtons(current_city, can_recruit_sprite,
+                                                                                cannot_recruit_sprite,
+                                                                                soldout_sprite);
 
     public void PrepareUI() {
         // Display the name of the current city:
@@ -142,6 +155,9 @@ public class UICityMenue : MonoBehaviour {
 
         // Update all build buttons status for this city:
         UpdateAllButtons();
+
+        // Update all recruit buttons status for this city:
+        UpdateAllRecruitButtons();
 
         // Show or hide elements of the GUI dependent on the current build status:
         ui_items.UpdateStatus(current_city);
@@ -395,10 +411,11 @@ public class UICityMenueButtons {
     public Button creature_iv_recruite_btn;
 
     public void ChangeButtonSprite(CityBuildingType type, Sprite sprite) {
-        var btn_img = GetButtonFromType(type)
-                        .transform
-                        .GetChild(0)
-                        .GetComponent<Image>();
+        ChangeButtonSprite(GetButtonFromType(type), sprite);
+    }
+
+    public void ChangeButtonSprite(Button btn, Sprite sprite) {
+        var btn_img = btn.transform.GetChild(0).GetComponent<Image>();
         btn_img.sprite = sprite;
     }
 
@@ -497,8 +514,42 @@ public class UICityMenueButtons {
         UpdateDefenceButtonStatus(city, city.stronghold2, can_build, cannot_build, already_built, wait_built);
     }
 
-    public void UpdateRecruitButtons(City city) {
-        // TODO...
+    public void UpdateRecruitButton(Button btn, bool is_built, float stock, bool affordable, 
+                                    Sprite can_recruit, Sprite cannot_recruit, Sprite soldout) {
+        if(is_built) {
+            if(Mathf.FloorToInt(stock) > 0) {
+                if(affordable) {
+                    ChangeButtonSprite(btn, can_recruit);
+                } else {
+                    ChangeButtonSprite(btn, cannot_recruit);
+                }
+            } else {
+                ChangeButtonSprite(btn, soldout);
+            }
+        }
+    }
+
+    public void UpdateAllRecruitButtons(City city, Sprite can_recruit, Sprite cannot_recruit, Sprite soldout) {
+        UpdateRecruitButton(creature_i_1_recruite_btn, city.creatures_i_1.is_built, city.creature_i_1_stock, 
+                            city.CanRecruit(city.recr_creature_i_1.costs), can_recruit, cannot_recruit, soldout);
+        UpdateRecruitButton(creature_i_2_recruite_btn, city.creatures_i_2.is_built, city.creature_i_2_stock, 
+                            city.CanRecruit(city.recr_creature_i_2.costs), can_recruit, cannot_recruit, soldout);
+        UpdateRecruitButton(creature_ii_1_recruite_btn, city.creatures_ii_1.is_built, city.creature_ii_1_stock, 
+                            city.CanRecruit(city.recr_creature_ii_1.costs), can_recruit, cannot_recruit, soldout);
+        UpdateRecruitButton(creature_ii_2_recruite_btn, city.creatures_ii_2.is_built, city.creature_ii_2_stock, 
+                            city.CanRecruit(city.recr_creature_ii_2.costs), can_recruit, cannot_recruit, soldout);
+        UpdateRecruitButton(creature_iii_1_recruite_btn, city.creatures_iii_1.is_built, city.creature_iii_1_stock, 
+                            city.CanRecruit(city.recr_creature_iii_1.costs), can_recruit, cannot_recruit, soldout);
+        UpdateRecruitButton(creature_iii_2_recruite_btn, city.creatures_iii_2.is_built, city.creature_iii_2_stock, 
+                            city.CanRecruit(city.recr_creature_iii_2.costs), can_recruit, cannot_recruit, soldout);
+        
+        if(city.creatures_iv_1.is_built) {
+            UpdateRecruitButton(creature_iv_recruite_btn, city.creatures_iv_1.is_built, city.creature_iv_1_stock, 
+                                city.CanRecruit(city.recr_creature_iv_1.costs), can_recruit, cannot_recruit, soldout);
+        } else {
+            UpdateRecruitButton(creature_iv_recruite_btn, city.creatures_iv_2.is_built, city.creature_iv_2_stock, 
+                                city.CanRecruit(city.recr_creature_iv_2.costs), can_recruit, cannot_recruit, soldout);
+        }
     }
 }
 
