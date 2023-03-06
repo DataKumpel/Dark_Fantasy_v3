@@ -13252,7 +13252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &701450134
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29130,7 +29130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1552739454
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32563,7 +32563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1743653409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32700,6 +32700,13 @@ MonoBehaviour:
         fort_disp: {fileID: 1531297326}
         citadel_disp: {fileID: 229869069}
         stronghold_disp: {fileID: 1451354262}
+        creature_i_1_disp: {fileID: 0}
+        creature_i_2_disp: {fileID: 0}
+        creature_ii_1_disp: {fileID: 0}
+        creature_ii_2_disp: {fileID: 0}
+        creature_iii_1_disp: {fileID: 0}
+        creature_iii_2_disp: {fileID: 0}
+        creature_iv_disp: {fileID: 0}
     - rid: 7481776591586983936
       type: {class: UICityMenueButtons, ns: , asm: Assembly-CSharp}
       data:
@@ -42309,7 +42316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2907529046377084119, guid: 66f5b2f45139cd04abbf27c03a27f09a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f5b2f45139cd04abbf27c03a27f09a, type: 3}
