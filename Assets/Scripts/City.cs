@@ -230,6 +230,22 @@ public class City : Building {
         return true;
     }
 
+    public bool CanRecruit(CreatureCosts costs) {
+        // Check if the resources for at least one unit are present:
+        if(wood < costs.wood) return false;
+        if(food < costs.food) return false;
+        if(iron < costs.iron) return false;
+        if(stone < costs.stone) return false;
+        if(gun_powder < costs.gun_powder) return false;
+        if(pure_silver < costs.pure_silver) return false;
+        if(mana_essence < costs.mana_essence) return false;
+        if(void_crystal < costs.void_crystal) return false;
+        if(sacrificial_blood < costs.sacrificial_blood) return false;
+
+        // All checks pass, so one unit can be recruited:
+        return true;
+    }
+
     public void PayResources(CityBuildingCost costs) {
         AddResource(ResourceType.wood, -costs.cost_wood);
         AddResource(ResourceType.food, -costs.cost_food);
