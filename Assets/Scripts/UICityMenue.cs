@@ -136,6 +136,21 @@ public class UICityMenue : MonoBehaviour {
     public void ShowCitadelCosts() => resource_display.ShowCosts(current_city.citadel2.costs);
     public void ShowStrongholdCosts() => resource_display.ShowCosts(current_city.stronghold2.costs);
 
+    // Functions for creature recruitation costs:
+    public void ShowRecruitCreature_I_1Costs() => resource_display.ShowCosts(current_city.recr_creature_i_1.costs);
+    public void ShowRecruitCreature_I_2Costs() => resource_display.ShowCosts(current_city.recr_creature_i_2.costs);
+    public void ShowRecruitCreature_II_1Costs() => resource_display.ShowCosts(current_city.recr_creature_ii_1.costs);
+    public void ShowRecruitCreature_II_2Costs() => resource_display.ShowCosts(current_city.recr_creature_ii_2.costs);
+    public void ShowRecruitCreature_III_1Costs() => resource_display.ShowCosts(current_city.recr_creature_iii_1.costs);
+    public void ShowRecruitCreature_III_2Costs() => resource_display.ShowCosts(current_city.recr_creature_iii_2.costs);
+    public void ShowRecruitCreature_IV_Costs() {
+        if(current_city.creatures_iv_1.is_built) {
+            resource_display.ShowCosts(current_city.recr_creature_iv_1.costs);
+        } else {
+            resource_display.ShowCosts(current_city.recr_creature_iv_2.costs);
+        }
+    }
+
     public void HideCosts() => resource_display.HideCosts();
 
     // For simplicity of life :D 
