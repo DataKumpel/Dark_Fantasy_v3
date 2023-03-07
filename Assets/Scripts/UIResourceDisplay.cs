@@ -87,4 +87,20 @@ public class UIResourceDisplay : MonoBehaviour {
         UpdateCostDisplay(cost_voidcrystal_disp, voidcrystal_disp, costs.cost_voidcrystal);
         UpdateCostDisplay(cost_sacrificialblood_disp, sacrificialblood_disp, costs.cost_sacrificialblood);
     }
+
+    public void ShowCosts(CreatureCosts costs) {
+        // Clean up everything and start on blank canvas:
+        HideCosts();
+
+        // Update every cost display:
+        UpdateCostDisplay(cost_food_disp, food_disp, costs.food);
+        UpdateCostDisplay(cost_wood_disp, wood_disp, costs.wood);
+        UpdateCostDisplay(cost_iron_disp, iron_disp, costs.iron);
+        UpdateCostDisplay(cost_stone_disp, stone_disp, costs.stone);
+        UpdateCostDisplay(cost_gunpowder_disp, gunpowder_disp, costs.gun_powder);
+        UpdateCostDisplay(cost_puresilver_disp, puresilver_disp, costs.pure_silver);
+        UpdateCostDisplay(cost_manaessence_disp, manaessence_disp, costs.mana_essence);
+        UpdateCostDisplay(cost_voidcrystal_disp, voidcrystal_disp, costs.void_crystal);
+        UpdateCostDisplay(cost_sacrificialblood_disp, sacrificialblood_disp, costs.sacrificial_blood);
+    }
 }
