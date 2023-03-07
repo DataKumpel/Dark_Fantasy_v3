@@ -13252,7 +13252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &701450134
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25844,7 +25844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1376657298
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32651,6 +32651,9 @@ MonoBehaviour:
   cannot_build_sprite: {fileID: 21300000, guid: 8fac55fff4ce5fa40a7b2efefc0e617a, type: 3}
   already_built_sprite: {fileID: 21300000, guid: be340a165cb9c8d4cb50f1deeb51d4ea, type: 3}
   wait_build_sprite: {fileID: 21300000, guid: 5dbc069eb79bd4d43840847264d6d956, type: 3}
+  can_recruit_sprite: {fileID: 0}
+  cannot_recruit_sprite: {fileID: 0}
+  soldout_sprite: {fileID: 0}
   resource_display: {fileID: 1461023071}
   ui_texts:
     rid: 7481776568094425088
