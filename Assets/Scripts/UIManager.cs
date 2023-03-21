@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour {
     public GameObject resource_panel;
     public GameObject city_panel;
     public GameObject unit_inventory_panel;
+    public GameObject recruitation_panel;
 
     public static UIManager Connect() {
         return GameObject
@@ -25,5 +26,12 @@ public class UIManager : MonoBehaviour {
                 .Connect()
                 .unit_inventory_panel
                 .GetComponent<UIUnitInventory>();
+    }
+
+    public static UIRecruitmentDialog ConnectRecruitmentDialog() {
+        return UIManager
+                .Connect()
+                .recruitation_panel
+                .GetComponent<UIRecruitmentDialog>();
     }
 }
