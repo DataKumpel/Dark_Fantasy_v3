@@ -15,15 +15,7 @@ public class City : Building {
     public GameObject army_visitor;
 
     [Header("Resources")]
-    public int wood = 0;
-    public int stone = 0;
-    public int food = 0;
-    public int iron = 0;
-    public int void_crystal = 0;
-    public int gun_powder = 0;
-    public int sacrificial_blood = 0;
-    public int mana_essence = 0;
-    public int pure_silver = 0;
+    [SerializeReference] public CityResources resources;
 
     [Header("Main Building")]
     [SerializeReference] public CityBuilding camp = new();
@@ -201,30 +193,30 @@ public class City : Building {
 
     public void AddResource(ResourceType type, int amnt) {
         switch(type) {
-            case ResourceType.wood: wood += amnt; break;
-            case ResourceType.food: food += amnt; break;
-            case ResourceType.iron: iron += amnt; break;
-            case ResourceType.stone: stone += amnt; break;
-            case ResourceType.gun_powder: gun_powder += amnt; break;
-            case ResourceType.pure_silver: pure_silver += amnt; break;
-            case ResourceType.mana_essence: mana_essence += amnt; break;
-            case ResourceType.void_crystal: void_crystal += amnt; break;
-            case ResourceType.sacrificial_blood: sacrificial_blood += amnt; break;
+            case ResourceType.wood: resources.wood += amnt; break;
+            case ResourceType.food: resources.food += amnt; break;
+            case ResourceType.iron: resources.iron += amnt; break;
+            case ResourceType.stone: resources.stone += amnt; break;
+            case ResourceType.gun_powder: resources.gun_powder += amnt; break;
+            case ResourceType.pure_silver: resources.pure_silver += amnt; break;
+            case ResourceType.mana_essence: resources.mana_essence += amnt; break;
+            case ResourceType.void_crystal: resources.void_crystal += amnt; break;
+            case ResourceType.sacrificial_blood: resources.sacrificial_blood += amnt; break;
             default: break;
         }
     }
 
     public bool CanBuild(CityBuildingCost costs) {
         // Check if resources are missing:
-        if(wood < costs.cost_wood) return false;
-        if(food < costs.cost_food) return false;
-        if(iron < costs.cost_iron) return false;
-        if(stone < costs.cost_stone) return false;
-        if(gun_powder < costs.cost_gunpowder) return false;
-        if(pure_silver < costs.cost_puresilver) return false;
-        if(mana_essence < costs.cost_manaessence) return false;
-        if(void_crystal < costs.cost_voidcrystal) return false;
-        if(sacrificial_blood < costs.cost_sacrificialblood) return false;
+        if(resources.wood < costs.cost_wood) return false;
+        if(resources.food < costs.cost_food) return false;
+        if(resources.iron < costs.cost_iron) return false;
+        if(resources.stone < costs.cost_stone) return false;
+        if(resources.gun_powder < costs.cost_gunpowder) return false;
+        if(resources.pure_silver < costs.cost_puresilver) return false;
+        if(resources.mana_essence < costs.cost_manaessence) return false;
+        if(resources.void_crystal < costs.cost_voidcrystal) return false;
+        if(resources.sacrificial_blood < costs.cost_sacrificialblood) return false;
 
         // All checks pass, building can be acquired:
         return true;
@@ -232,15 +224,15 @@ public class City : Building {
 
     public bool CanRecruit(CreatureCosts costs) {
         // Check if the resources for at least one unit are present:
-        if(wood < costs.wood) return false;
-        if(food < costs.food) return false;
-        if(iron < costs.iron) return false;
-        if(stone < costs.stone) return false;
-        if(gun_powder < costs.gun_powder) return false;
-        if(pure_silver < costs.pure_silver) return false;
-        if(mana_essence < costs.mana_essence) return false;
-        if(void_crystal < costs.void_crystal) return false;
-        if(sacrificial_blood < costs.sacrificial_blood) return false;
+        if(resources.wood < costs.wood) return false;
+        if(resources.food < costs.food) return false;
+        if(resources.iron < costs.iron) return false;
+        if(resources.stone < costs.stone) return false;
+        if(resources.gun_powder < costs.gun_powder) return false;
+        if(resources.pure_silver < costs.pure_silver) return false;
+        if(resources.mana_essence < costs.mana_essence) return false;
+        if(resources.void_crystal < costs.void_crystal) return false;
+        if(resources.sacrificial_blood < costs.sacrificial_blood) return false;
 
         // All checks pass, so one unit can be recruited:
         return true;
@@ -524,6 +516,18 @@ public class CityDefence {
         }
         is_built = true;
     }
+}
+
+public class CityResources {
+    public int wood = 0;
+    public int stone = 0;
+    public int food = 0;
+    public int iron = 0;
+    public int void_crystal = 0;
+    public int gun_powder = 0;
+    public int sacrificial_blood = 0;
+    public int mana_essence = 0;
+    public int pure_silver = 0;
 }
 
 public class CityBuildingCost {
