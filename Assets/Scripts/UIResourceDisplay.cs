@@ -29,23 +29,19 @@ public class UIResourceDisplay : MonoBehaviour {
     public GameObject cost_sacrificialblood_disp;
     public GameObject cost_voidcrystal_disp;
 
-    public void UpdateResourceDisplays(int food, int wood, int stone, int iron, 
-                                       int gunpowder, int puresilver, int manaessence, 
-                                       int sacrificialblood, int voidcrystal) {
-        food_disp.text = food.ToString();
-        wood_disp.text = wood.ToString();
-        stone_disp.text = stone.ToString();
-        iron_disp.text = iron.ToString();
-        gunpowder_disp.text = gunpowder.ToString();
-        puresilver_disp.text = puresilver.ToString();
-        manaessence_disp.text = manaessence.ToString();
-        sacrificialblood_disp.text = sacrificialblood.ToString();
-        voidcrystal_disp.text = voidcrystal.ToString();
+    public void UpdateResourceDisplays(CityResources resources) {
+        food_disp.text = resources.food.ToString();
+        wood_disp.text = resources.wood.ToString();
+        stone_disp.text = resources.stone.ToString();
+        iron_disp.text = resources.iron.ToString();
+        gunpowder_disp.text = resources.gun_powder.ToString();
+        puresilver_disp.text = resources.pure_silver.ToString();
+        manaessence_disp.text = resources.mana_essence.ToString();
+        sacrificialblood_disp.text = resources.sacrificial_blood.ToString();
+        voidcrystal_disp.text = resources.void_crystal.ToString();
     }
 
-    public void UpdateDisplays(City city) => UpdateResourceDisplays(city.food, city.wood, city.stone, city.iron, 
-                                                                    city.gun_powder, city.pure_silver, city.mana_essence,
-                                                                    city.sacrificial_blood, city.void_crystal);
+    public void UpdateDisplays(City city) => UpdateResourceDisplays(city.resources);
 
     public void HideCosts() {
         cost_food_disp.SetActive(false);
