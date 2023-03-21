@@ -66,9 +66,6 @@ public class Player : MonoBehaviour {
             case ResourceType.mana_essence: mana_essence += amnt; break;
             case ResourceType.sacrificial_blood: sacrificial_blood += amnt; break;
         }
-
-        // Display Resources:
-        UpdateResourceDisplay();
     }
 
     public void HarvestFromBuildings() {
@@ -83,12 +80,6 @@ public class Player : MonoBehaviour {
                 //            resource_building.amount_per_day);
             }
         }
-    }
-
-    public void UpdateResourceDisplay() {
-        res_disp.UpdateResourceDisplays(food, wood, stone, iron, gun_powder, 
-                                pure_silver, mana_essence, sacrificial_blood, 
-                                void_crystal);
     }
 
     public void LightBuildings(bool val) {
