@@ -98,53 +98,60 @@ public class UIRecruitmentDialog : MonoBehaviour {
     }
 
     public void OnCancel() {
+        gameObject.SetActive(false);
+    }
 
+    public void InvalidateBuyBtn() {
+        buy_btn.interactable = false;
+        recruit_display.color = Color.red;
     }
 
     public void OnSliderChange() {
         UpdateTotalCost();
         var amnt = (int) recruit_slider.value;
+        recruit_display.text = amnt.ToString();
 
         // Check if the buy btn should be enabled:
-        if(creature.costs.wood * amnt < city_resources.wood) {
-            buy_btn.interactable = false;
+        if(creature.costs.wood * amnt > city_resources.wood) {
+            InvalidateBuyBtn();
             return;
         }
-        if(creature.costs.stone * amnt < city_resources.stone) {
-            buy_btn.interactable = false;
+        if(creature.costs.stone * amnt > city_resources.stone) {
+            InvalidateBuyBtn();
             return;
         }
-        if(creature.costs.food * amnt < city_resources.food) {
-            buy_btn.interactable = false;
+        if(creature.costs.food * amnt > city_resources.food) {
+            InvalidateBuyBtn();
             return;
         }
-        if(creature.costs.iron * amnt < city_resources.iron) {
-            buy_btn.interactable = false;
+        if(creature.costs.iron * amnt > city_resources.iron) {
+            InvalidateBuyBtn();
             return;
         }
-        if(creature.costs.gun_powder * amnt < city_resources.gun_powder) {
-            buy_btn.interactable = false;
+        if(creature.costs.gun_powder * amnt > city_resources.gun_powder) {
+            InvalidateBuyBtn();
             return;
         }
-        if(creature.costs.pure_silver * amnt < city_resources.pure_silver) {
-            buy_btn.interactable = false;
+        if(creature.costs.pure_silver * amnt > city_resources.pure_silver) {
+            InvalidateBuyBtn();
             return;
         }
-        if(creature.costs.mana_essence * amnt < city_resources.mana_essence) {
-            buy_btn.interactable = false;
+        if(creature.costs.mana_essence * amnt > city_resources.mana_essence) {
+            InvalidateBuyBtn();
             return;
         }
-        if(creature.costs.sacrificial_blood * amnt < city_resources.sacrificial_blood) {
-            buy_btn.interactable = false;
+        if(creature.costs.sacrificial_blood * amnt > city_resources.sacrificial_blood) {
+            InvalidateBuyBtn();
             return;
         }
-        if(creature.costs.void_crystal * amnt < city_resources.void_crystal) {
-            buy_btn.interactable = false;
+        if(creature.costs.void_crystal * amnt > city_resources.void_crystal) {
+            InvalidateBuyBtn();
             return;
         }
 
         // If all tests are negative, the buy button should be active:
         buy_btn.interactable = true;
+        recruit_display.color = Color.green;
     }
 
     public void UpdateCostPerUnit() => cost_per_unit.UpdateDisplays(creature.costs);
