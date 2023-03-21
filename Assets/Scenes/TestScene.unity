@@ -1189,7 +1189,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 65096461}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1743653412}
+        m_TargetAssemblyTypeName: UICityMenue, Assembly-CSharp
+        m_MethodName: RecruitCreature_II_2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &65096461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2543,7 +2555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &144652401
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8941,7 +8953,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10304,7 +10316,7 @@ MonoBehaviour:
   resource_panel: {fileID: 1204241481}
   city_panel: {fileID: 1743653408}
   unit_inventory_panel: {fileID: 1715683662}
-  recruitation_panel: {fileID: 0}
+  recruitation_panel: {fileID: 144652400}
 --- !u!1 &474970371
 GameObject:
   m_ObjectHideFlags: 0
@@ -10783,7 +10795,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 490692124}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1743653412}
+        m_TargetAssemblyTypeName: UICityMenue, Assembly-CSharp
+        m_MethodName: RecruitCreature_I_1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &490692124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18559,7 +18583,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 846968640}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1743653412}
+        m_TargetAssemblyTypeName: UICityMenue, Assembly-CSharp
+        m_MethodName: RecruitCreature_I_2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &846968640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18958,7 +18994,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 864967041}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 144652404}
+        m_TargetAssemblyTypeName: UIRecruitmentDialog, Assembly-CSharp
+        m_MethodName: OnCancel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &864967041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19520,7 +19568,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 144652404}
+        m_TargetAssemblyTypeName: UIRecruitmentDialog, Assembly-CSharp
+        m_MethodName: OnSliderChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &882657555
 GameObject:
   m_ObjectHideFlags: 0
@@ -23495,7 +23555,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1062789851}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1743653412}
+        m_TargetAssemblyTypeName: UICityMenue, Assembly-CSharp
+        m_MethodName: RecruitCreature_III_2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1062789851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29496,6 +29568,42 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3854169904937020520, guid: 03572a3060ed7f84482f8c2e33543a3b, type: 3}
     - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: recr_creature_i_1
+      value: 
+      objectReference: {fileID: 3854169904937020520, guid: 03572a3060ed7f84482f8c2e33543a3b, type: 3}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: recr_creature_i_2
+      value: 
+      objectReference: {fileID: 3854169904937020520, guid: 03572a3060ed7f84482f8c2e33543a3b, type: 3}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: creature_i_1_stock
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: recr_creature_ii_1
+      value: 
+      objectReference: {fileID: 3854169904937020520, guid: 03572a3060ed7f84482f8c2e33543a3b, type: 3}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: recr_creature_ii_2
+      value: 
+      objectReference: {fileID: 3854169904937020520, guid: 03572a3060ed7f84482f8c2e33543a3b, type: 3}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: recr_creature_iv_1
+      value: 
+      objectReference: {fileID: 3854169904937020520, guid: 03572a3060ed7f84482f8c2e33543a3b, type: 3}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: recr_creature_iv_2
+      value: 
+      objectReference: {fileID: 3854169904937020520, guid: 03572a3060ed7f84482f8c2e33543a3b, type: 3}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: recr_creature_iii_1
+      value: 
+      objectReference: {fileID: 3854169904937020520, guid: 03572a3060ed7f84482f8c2e33543a3b, type: 3}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
+      propertyPath: recr_creature_iii_2
+      value: 
+      objectReference: {fileID: 3854169904937020520, guid: 03572a3060ed7f84482f8c2e33543a3b, type: 3}
+    - target: {fileID: 8746156669856233550, guid: 68c0d8dcd6138454f9f53fe299297c7d, type: 3}
       propertyPath: managedReferences[7481776455204208672].is_built
       value: 1
       objectReference: {fileID: 0}
@@ -29869,7 +29977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1376657298
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33703,7 +33811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1552739454
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33861,7 +33969,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1560475504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1743653412}
+        m_TargetAssemblyTypeName: UICityMenue, Assembly-CSharp
+        m_MethodName: RecruitCreature_III_1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1560475504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34142,7 +34262,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1566385051}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1743653412}
+        m_TargetAssemblyTypeName: UICityMenue, Assembly-CSharp
+        m_MethodName: RecruitCreature_IV
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1566385051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35299,7 +35431,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1623551374}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1743653412}
+        m_TargetAssemblyTypeName: UICityMenue, Assembly-CSharp
+        m_MethodName: RecruitCreature_II_1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1623551374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36028,7 +36172,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -37798,7 +37942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1743653409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48870,7 +49014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2907529046377084119, guid: 66f5b2f45139cd04abbf27c03a27f09a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f5b2f45139cd04abbf27c03a27f09a, type: 3}
