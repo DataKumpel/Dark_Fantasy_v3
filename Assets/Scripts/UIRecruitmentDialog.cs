@@ -19,52 +19,74 @@ public class UIRecruitmentDialog : MonoBehaviour {
     private Creature creature;
 
     public void OpenDialog(City city, CreatureType type) {
+        // Show this panel:
+        gameObject.SetActive(true);
         city_resources = city.resources;
+        
+        // Show how many units are in stock:
+        UpdateStockDisplay(city, type);
+
+        // Show cost of current selected creature:
+        UpdateCostPerUnit();
+
+        // Reset recruit slider to zero:
+        recruit_slider.value = 0f;
+
+        // Update the total costs:
+        UpdateTotalCost();
+    }
+
+    public void UpdateStockDisplay(City city, CreatureType type) {
         switch(type) {
             case CreatureType.creature_tier_i_1: {
                 creature = city.recr_creature_i_1;
                 stock_display.text = Mathf.FloorToInt(city.creature_i_1_stock).ToString();
+                recruit_slider.maxValue = Mathf.FloorToInt(city.creature_i_1_stock);
                 break;
             }
             case CreatureType.creature_tier_i_2: {
                 creature = city.recr_creature_i_2;
                 stock_display.text = Mathf.FloorToInt(city.creature_i_2_stock).ToString();
+                recruit_slider.maxValue = Mathf.FloorToInt(city.creature_i_2_stock);
                 break;
             }
             case CreatureType.creature_tier_ii_1: {
                 creature = city.recr_creature_ii_1;
                 stock_display.text = Mathf.FloorToInt(city.creature_ii_1_stock).ToString();
+                recruit_slider.maxValue = Mathf.FloorToInt(city.creature_ii_1_stock);
                 break;
             }
             case CreatureType.creature_tier_ii_2: {
                 creature = city.recr_creature_ii_2;
                 stock_display.text = Mathf.FloorToInt(city.creature_ii_2_stock).ToString();
+                recruit_slider.maxValue = Mathf.FloorToInt(city.creature_ii_2_stock);
                 break;
             }
             case CreatureType.creature_tier_iii_1: {
                 creature = city.recr_creature_iii_1;
                 stock_display.text = Mathf.FloorToInt(city.creature_iii_1_stock).ToString();
+                recruit_slider.maxValue = Mathf.FloorToInt(city.creature_iii_1_stock);
                 break;
             }
             case CreatureType.creature_tier_iii_2: {
                 creature = city.recr_creature_iii_2;
                 stock_display.text = Mathf.FloorToInt(city.creature_iii_2_stock).ToString();
+                recruit_slider.maxValue = Mathf.FloorToInt(city.creature_iii_2_stock);
                 break;
             }
             case CreatureType.creature_tier_iv: {
                 if(city.creatures_iv_1.is_built) {
                     creature = city.recr_creature_iv_1;
                     stock_display.text = Mathf.FloorToInt(city.creature_iv_1_stock).ToString();
+                    recruit_slider.maxValue = Mathf.FloorToInt(city.creature_iv_1_stock);
                 } else {
                     creature = city.recr_creature_iv_2;
                     stock_display.text = Mathf.FloorToInt(city.creature_iv_2_stock).ToString();
+                    recruit_slider.maxValue = Mathf.FloorToInt(city.creature_iv_2_stock);
                 }
                 break;
             }
         }
-
-        UpdateCostPerUnit();
-        UpdateTotalCost(0);
     }
 
     public void OnBuy() {
@@ -79,8 +101,54 @@ public class UIRecruitmentDialog : MonoBehaviour {
 
     }
 
+    public void OnSliderChange() {
+        UpdateTotalCost();
+        var amnt = (int) recruit_slider.value;
+
+        // Check if the buy btn should be enabled:
+        if(creature.costs.wood * amnt < city_resources.wood) {
+            buy_btn.interactable = false;
+            return;
+        }
+        if(creature.costs.stone * amnt < city_resources.stone) {
+            buy_btn.interactable = false;
+            return;
+        }
+        if(creature.costs.food * amnt < city_resources.food) {
+            buy_btn.interactable = false;
+            return;
+        }
+        if(creature.costs.iron * amnt < city_resources.iron) {
+            buy_btn.interactable = false;
+            return;
+        }
+        if(creature.costs.gun_powder * amnt < city_resources.gun_powder) {
+            buy_btn.interactable = false;
+            return;
+        }
+        if(creature.costs.pure_silver * amnt < city_resources.pure_silver) {
+            buy_btn.interactable = false;
+            return;
+        }
+        if(creature.costs.mana_essence * amnt < city_resources.mana_essence) {
+            buy_btn.interactable = false;
+            return;
+        }
+        if(creature.costs.sacrificial_blood * amnt < city_resources.sacrificial_blood) {
+            buy_btn.interactable = false;
+            return;
+        }
+        if(creature.costs.void_crystal * amnt < city_resources.void_crystal) {
+            buy_btn.interactable = false;
+            return;
+        }
+
+        // If all tests are negative, the buy button should be active:
+        buy_btn.interactable = true;
+    }
+
     public void UpdateCostPerUnit() => cost_per_unit.UpdateDisplays(creature.costs);
-    public void UpdateTotalCost(int amnt) => total_cost.UpdateDisplays(creature.costs, city_resources, amnt);
+    public void UpdateTotalCost() => total_cost.UpdateDisplays(creature.costs, city_resources, (int) recruit_slider.value);
 }
 
 public class UICostPerUnit {
