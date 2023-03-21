@@ -161,6 +161,20 @@ public class UICityMenue : MonoBehaviour {
                                                                                 cannot_recruit_sprite,
                                                                                 soldout_sprite);
 
+    public void Recruit(CreatureType type) {
+        // Show recruitment dialog:
+        UIManager.ConnectRecruitmentDialog().OpenDialog(current_city, type);
+    }
+
+    // Same Problem with the enums:
+    public void RecruitCreature_I_1() => Recruit(CreatureType.creature_tier_i_1);
+    public void RecruitCreature_I_2() => Recruit(CreatureType.creature_tier_i_2);
+    public void RecruitCreature_II_1() => Recruit(CreatureType.creature_tier_i_1);
+    public void RecruitCreature_II_2() => Recruit(CreatureType.creature_tier_i_2);
+    public void RecruitCreature_III_1() => Recruit(CreatureType.creature_tier_i_1);
+    public void RecruitCreature_III_2() => Recruit(CreatureType.creature_tier_i_2);
+    public void RecruitCreature_IV() => Recruit(CreatureType.creature_tier_iv);
+    
     public void PrepareUI() {
         // Display the name of the current city:
         name_display.text = current_city.city_name;
@@ -625,12 +639,19 @@ public class UICityMenueTexts {
 
     [Header("Recruitation")]
     public Text creature_i_1_disp;
+    public Text creature_i_1_amnt_disp;
     public Text creature_i_2_disp;
+    public Text creature_i_2_amnt_disp;
     public Text creature_ii_1_disp;
+    public Text creature_ii_1_amnt_disp;
     public Text creature_ii_2_disp;
+    public Text creature_ii_2_amnt_disp;
     public Text creature_iii_1_disp;
+    public Text creature_iii_1_amnt_disp;
     public Text creature_iii_2_disp;
+    public Text creature_iii_2_amnt_disp;
     public Text creature_iv_disp;
+    public Text creature_iv_amnt_disp;
 
     public void UpdateTextDisplays(City city) {
         camp_disp.text = city.camp.building_name;
@@ -669,16 +690,25 @@ public class UICityMenueTexts {
         fort_disp.text = city.fort2.building_name;
         citadel_disp.text = city.citadel2.building_name;
         stronghold_disp.text = city.stronghold2.building_name;
+
         creature_i_1_disp.text = city.recr_creature_i_1.creature_name;
+        creature_i_1_amnt_disp.text = city.creature_i_1_stock.ToString();
         creature_i_2_disp.text = city.recr_creature_i_2.creature_name;
-        creature_ii_1_disp.text = city.recr_creature_i_1.creature_name;
-        creature_ii_2_disp.text = city.recr_creature_i_2.creature_name;
-        creature_iii_1_disp.text = city.recr_creature_i_1.creature_name;
-        creature_iii_2_disp.text = city.recr_creature_i_2.creature_name;
+        creature_i_2_amnt_disp.text = city.creature_i_2_stock.ToString();
+        creature_ii_1_disp.text = city.recr_creature_ii_1.creature_name;
+        creature_ii_1_amnt_disp.text = city.creature_ii_1_stock.ToString();
+        creature_ii_2_disp.text = city.recr_creature_ii_2.creature_name;
+        creature_ii_2_amnt_disp.text = city.creature_ii_2_stock.ToString();
+        creature_iii_1_disp.text = city.recr_creature_iii_1.creature_name;
+        creature_iii_1_amnt_disp.text = city.creature_iii_1_stock.ToString();
+        creature_iii_2_disp.text = city.recr_creature_iii_2.creature_name;
+        creature_iii_2_amnt_disp.text = city.creature_iii_2_stock.ToString();
         if(city.creatures_iv_1.is_built) {
             creature_iv_disp.text = city.recr_creature_iv_1.creature_name;
+            creature_iv_amnt_disp.text = city.creature_iv_1_stock.ToString();
         } else {
             creature_iv_disp.text = city.recr_creature_iv_2.creature_name;
+            creature_iv_amnt_disp.text = city.creature_iv_2_stock.ToString();
         }
     }
 }
