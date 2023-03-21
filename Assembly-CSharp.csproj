@@ -46,6 +46,7 @@
      <Compile Include="Assets\Scripts\ResourceBuilding.cs" />
      <Compile Include="Assets\Scripts\FogOfWar.cs" />
      <Compile Include="Assets\Scripts\HighlightEffect.cs" />
+     <Compile Include="Assets\Scripts\UIRecruitmentDialog.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\UnitSelectionManager.cs" />
      <Compile Include="Assets\Scripts\Creature.cs" />
