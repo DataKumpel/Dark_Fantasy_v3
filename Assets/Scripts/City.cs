@@ -15,7 +15,7 @@ public class City : Building {
     public GameObject army_visitor;
 
     [Header("Resources")]
-    [SerializeReference] public CityResources resources;
+    public CityResources resources = new();
 
     [Header("Main Building")]
     [SerializeReference] public CityBuilding camp = new();
@@ -518,6 +518,7 @@ public class CityDefence {
     }
 }
 
+[System.Serializable]
 public class CityResources {
     public int wood = 0;
     public int stone = 0;
