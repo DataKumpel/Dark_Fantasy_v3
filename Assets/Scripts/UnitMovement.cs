@@ -306,6 +306,9 @@ public class UnitMovement : MonoBehaviour {
 
             // Place a marker by clicking left:
             if(mouse.leftButton.wasPressedThisFrame) {
+                // Leave, if we are on UI:
+                if(UIManager.Connect().is_over_ui) return;
+                
                 // Stop movement for the path would be displayed incorrectly:
                 if(is_moving) {
                     StopMoving();

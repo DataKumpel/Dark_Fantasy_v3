@@ -10317,6 +10317,7 @@ MonoBehaviour:
   city_panel: {fileID: 1743653408}
   unit_inventory_panel: {fileID: 1715683662}
   recruitation_panel: {fileID: 144652400}
+  ui_layer: 0
 --- !u!1 &474970371
 GameObject:
   m_ObjectHideFlags: 0
