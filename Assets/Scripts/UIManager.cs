@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour {
     public GameObject resource_panel;
     public GameObject city_panel;
     public GameObject unit_inventory_panel;
     public GameObject recruitation_panel;
+    public int ui_layer;
+    public bool is_over_ui = false;
 
     public static UIManager Connect() {
         return GameObject
@@ -33,5 +36,28 @@ public class UIManager : MonoBehaviour {
                 .Connect()
                 .recruitation_panel
                 .GetComponent<UIRecruitmentDialog>();
+    }
+
+    public void Start() {
+        ui_layer = LayerMask.NameToLayer("UI");
+    }
+
+    public void Update() {
+        is_over_ui = IsPointerOverUIElement();
+        print(is_over_ui ? "Over UI" : "Not over UI");
+    }
+ 
+    // Returns true if we touched or hovering on Unity UI element:
+    private bool IsPointerOverUIElement() {
+        var event_data = new PointerEventData(EventSystem.current);
+        var results = new List<RaycastResult>();
+        
+        event_data.position = Input.mousePosition;
+        EventSystem.current.RaycastAll(event_data, results);
+
+        foreach(var result in results) {
+            if(result.gameObject.layer == ui_layer) return true;
+        }
+        return false;
     }
 }
