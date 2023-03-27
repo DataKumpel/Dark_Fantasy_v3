@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\MarkerRotation.cs" />
      <Compile Include="Assets\Scripts\MainMenue\UIQuitGame.cs" />
      <Compile Include="Assets\Scripts\Torch.cs" />
+     <Compile Include="Assets\Scripts\ResourcePickUpInfo.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />
      <Compile Include="Assets\Scripts\MainMenue\UICampaign.cs" />
      <Compile Include="Assets\Scripts\RoundManager.cs" />
