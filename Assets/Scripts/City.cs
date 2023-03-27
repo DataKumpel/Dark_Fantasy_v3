@@ -100,6 +100,7 @@ public class City : Building {
     private Mouse mouse = Mouse.current;
     private RoundManager round_manager;
     private UnitSelectionManager selection_manager;
+    private UIManager ui_manager;
 
     public new void Start() {
         // Connect to unit selection manager:
@@ -107,6 +108,9 @@ public class City : Building {
         
         // Connect to round manager:
         round_manager = RoundManager.Connect();
+
+        // Connect to UI manager:
+        ui_manager = UIManager.Connect();
         
         // Connect to the main cam:
         cam_movemement = CameraMovement.Connect();
@@ -478,6 +482,9 @@ public class City : Building {
     public void Update() {
         // If there is a unit selected, don't be able to enter city menue by clicking:
         if(selection_manager.current_selection != null) return;
+
+        // Don't react to mouse input when pointer is over ui:
+        if(ui_manager.is_over_ui) return;
 
         // City selection by click:
         if(mouse_over && mouse.leftButton.wasPressedThisFrame) {
