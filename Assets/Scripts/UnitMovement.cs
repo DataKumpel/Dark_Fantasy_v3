@@ -39,15 +39,30 @@ public class UnitMovement : MonoBehaviour {
     private bool is_facing = false;
     private Quaternion target_rotation;
     private float old_zoom;
+    private UIManager ui_manager;
 
     public void Start() {
+        // Get the Navmesh Agent component and set its state initially to stopped:
         agent = GetComponent<NavMeshAgent>();
         agent.isStopped = true;
+
+        // Get the highlight effect, which handles selection:
         highlight = GetComponent<HighlightEffect>();
+
+        // Create a path object:
         path = new NavMeshPath();
+
+        // Connect to periphericals:
         mouse = Mouse.current;
         keyboard = Keyboard.current;
+
+        // Connect to the camera:
         cam_movement = CameraMovement.Connect();
+
+        // Connect to UI manager:
+        ui_manager = UIManager.Connect();
+
+        // (Deprecated) Connect to the fog of war:
         fog_of_war = GameObject
             .FindGameObjectWithTag("FogOfWar")
             .GetComponent<FogOfWar>();
@@ -307,7 +322,7 @@ public class UnitMovement : MonoBehaviour {
             // Place a marker by clicking left:
             if(mouse.leftButton.wasPressedThisFrame) {
                 // Leave, if we are on UI:
-                if(UIManager.Connect().is_over_ui) return;
+                if(ui_manager.is_over_ui) return;
                 
                 // Stop movement for the path would be displayed incorrectly:
                 if(is_moving) {
