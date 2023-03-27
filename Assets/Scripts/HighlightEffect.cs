@@ -23,6 +23,7 @@ public class HighlightEffect : MonoBehaviour {
     private Mouse mouse;
     private UnitSelectionManager selection_manager;
     private RoundManager round_manager;
+    private UIManager ui_manager;
 
 
     public void Start() {
@@ -42,6 +43,9 @@ public class HighlightEffect : MonoBehaviour {
         
         // Connect to round manager:
         round_manager = RoundManager.Connect();
+
+        // Connect to UI manager:
+        ui_manager = UIManager.Connect();
     }
 
 
@@ -94,6 +98,9 @@ public class HighlightEffect : MonoBehaviour {
 
 
     public void Update() {
+        // Don't react to mouse input, when pointer is over UI:
+        if(ui_manager.is_over_ui) return;
+        
         if(is_highlighted && mouse.leftButton.wasPressedThisFrame) {
             Select();
         }
