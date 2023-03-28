@@ -22,6 +22,9 @@ public class UICityMenue : MonoBehaviour {
     [Header("Resource Display")]
     public UIResourceDisplay resource_display;
 
+    [Header("City Unit Exchange Display")]
+    public GameObject city_unit_exchange_display;
+
     [Header("UI Groups")]
     [SerializeReference] public UICityMenueTexts ui_texts = new();
     [SerializeReference] public UICityMenueButtons ui_buttons = new();
@@ -207,6 +210,9 @@ public class UICityMenue : MonoBehaviour {
         // Show the UI always on main group:
         gameObject.SetActive(true);
         ToGroup(main_group);
+
+        // Show city to unit exchange menue:
+        city_unit_exchange_display.SetActive(true);
     }
 
     public void OnExit() {
@@ -214,6 +220,7 @@ public class UICityMenue : MonoBehaviour {
         resource_display.HideCosts();
         resource_display.gameObject.SetActive(false);
         gameObject.SetActive(false);
+        city_unit_exchange_display.SetActive(false);
     }
 
     public void Update() {
