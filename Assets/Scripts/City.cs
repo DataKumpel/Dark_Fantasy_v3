@@ -463,7 +463,12 @@ public class City : Building {
 
     public void UnitEnterBuilding(Unit unit) {
         // A unit enters the city and opens the city-unit interface:
-        
+        army_visitor = unit.gameObject;
+        print($"{army_visitor} is now visitor in {city_name}");
+    }
+
+    public void UnitExitBuilding() {
+        army_visitor = null;
     }
 
     public void ExitBuilding() {
