@@ -8,8 +8,9 @@ public class UIManager : MonoBehaviour {
     public GameObject city_panel;
     public GameObject unit_inventory_panel;
     public GameObject recruitation_panel;
-    public int ui_layer;
     public bool is_over_ui = false;
+    
+    private int ui_layer;
 
     public static UIManager Connect() {
         return GameObject
@@ -44,10 +45,10 @@ public class UIManager : MonoBehaviour {
 
     public void Update() {
         is_over_ui = IsPointerOverUIElement();
-        print(is_over_ui ? "Over UI" : "Not over UI");
+        // print(is_over_ui ? "Over UI" : "Not over UI");
     }
  
-    // Returns true if we touched or hovering on Unity UI element:
+    // Returns true if we touched or hovering on UI element:
     private bool IsPointerOverUIElement() {
         var event_data = new PointerEventData(EventSystem.current);
         var results = new List<RaycastResult>();
