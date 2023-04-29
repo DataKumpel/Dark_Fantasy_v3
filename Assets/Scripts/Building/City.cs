@@ -93,7 +93,6 @@ public class City : Building {
     [HideInInspector] public bool has_recruited_this_round = false;
     [HideInInspector] public List<CityBuilding> buildings = new();
     
-    private UICityMenue city_menue;
     private CameraMovement cam_movemement;
     private float cam_zoom_backup;
     private bool mouse_over = false;
@@ -101,6 +100,8 @@ public class City : Building {
     private RoundManager round_manager;
     private UnitSelectionManager selection_manager;
     private UIManager ui_manager;
+    private UICityMenue city_menue;
+    private UICityUnitExchange city_unit_exchange;
 
     public new void Start() {
         // Connect to unit selection manager:
@@ -115,8 +116,11 @@ public class City : Building {
         // Connect to the main cam:
         cam_movemement = CameraMovement.Connect();
         
-        // Connect to UI:
+        // Connect to city UI:
         city_menue = UIManager.ConnectCityMenue();
+
+        // Connect to city unit exchange UI:
+        city_unit_exchange = UIManager.ConnectCityUnitExchange();
         
         // Adjust reveal range according to base buildings:
         AdjustLightRange();
@@ -436,28 +440,34 @@ public class City : Building {
         cam_movemement.SetZoom(zoom_value);
     }
 
+    public void Conquer(Player by_player) {
+        Debug.Log($"You conquered the building {gameObject.name}!");
+            
+        // Remove this building from a players list of buildings, if owned:
+        if(owner != null) {
+            owner.UnregisterBuilding(this);
+        }
+        
+        // Change the owner of the city to be the conqueror:
+        owner = by_player;
+        owner.RegisterBuilding(this);
+
+        // Light the city:
+        SwitchLight(true);
+
+        // Also enter the city menue:
+        CamToFocus();
+        city_menue.OnEnter(this);
+    }
+
     public new void EnterBuilding(Player player) {
         if(player == owner) {
             CamToFocus();
             city_menue.OnEnter(this);
+            city_unit_exchange.OnEnter(this);
         } else {
-            Debug.Log($"You conquered the building {gameObject.name}!");
-            
-            // Remove this building from a players list of buildings, if owned:
-            if(owner != null) {
-                owner.UnregisterBuilding(this);
-            }
-            
-            // Change the owner of the city to be the conqueror:
-            owner = player;
-            owner.RegisterBuilding(this);
-
-            // Light the city:
-            SwitchLight(true);
-
-            // Also enter the city menue:
-            CamToFocus();
-            city_menue.OnEnter(this);
+            // Possibility of a fight! TODO!!!
+            Conquer(player);
         }
     }
 
@@ -465,6 +475,7 @@ public class City : Building {
         // A unit enters the city and opens the city-unit interface:
         army_visitor = unit.gameObject;
         print($"{army_visitor} is now visitor in {city_name}");
+        city_unit_exchange.OnEnterUnit(this, unit);
     }
 
     public void UnitExitBuilding() {

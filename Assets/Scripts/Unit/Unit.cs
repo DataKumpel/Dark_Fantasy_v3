@@ -9,8 +9,8 @@ public class Unit : MonoBehaviour {
     public float max_walk_distance = 10f;
 
     [Header("Army")]
-    public int max_army_size = 8;
-    public List<Creature> army = new();
+    public int max_army_size = 8;  // Not needed... handled by list attribute .Count
+    public List<Creature> army = new(8);
     
     [Header("Torches")]
     // TODO: Change torches to be a collectable in inventory???
@@ -39,6 +39,12 @@ public class Unit : MonoBehaviour {
         SwitchLight(false);
         if(owner != null) {
             owner.RegisterUnit(this);
+        }
+        
+        // Automatically set every creatures army index:
+        for(int i = 0; i < max_army_size; i++) {
+            if(army[i] == null) continue;
+            army[i].army_index = i;
         }
     }
 
@@ -133,6 +139,10 @@ public class Unit : MonoBehaviour {
     public void AddCreature(Creature creature, int amnt) {
         // Look, if there is already a same name creature in the army:
         foreach(var army_creature in army) {
+            // Skip empty slots:
+            if(army_creature == null) continue;
+
+            // Look for creatures with same army name:
             if(army_creature.creature_name == creature.creature_name) {
                 army_creature.number += amnt;
                 return;
@@ -142,7 +152,8 @@ public class Unit : MonoBehaviour {
         // If no fitting creature was found, try to create a new one:
         if(army.Count == max_army_size) throw new ArmyFullException();
 
-        
+        // Add the creature to the army:
+        army.Add(creature);
     }
 
     public void Update() {

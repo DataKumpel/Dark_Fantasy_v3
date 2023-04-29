@@ -8,7 +8,9 @@ public class UIManager : MonoBehaviour {
     public GameObject city_panel;
     public GameObject unit_inventory_panel;
     public GameObject recruitation_panel;
-    public bool is_over_ui = false;
+    public GameObject city_unit_exchange_panel;
+    
+    [HideInInspector] public bool is_over_ui = false;
     
     private int ui_layer;
 
@@ -37,6 +39,13 @@ public class UIManager : MonoBehaviour {
                 .Connect()
                 .recruitation_panel
                 .GetComponent<UIRecruitmentDialog>();
+    }
+
+    public static UICityUnitExchange ConnectCityUnitExchange() {
+        return UIManager
+                .Connect()
+                .city_unit_exchange_panel
+                .GetComponent<UICityUnitExchange>();
     }
 
     public void Start() {

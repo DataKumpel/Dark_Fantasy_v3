@@ -9,6 +9,7 @@ public class Creature : MonoBehaviour {
     public int number = 1;
     public GameObject representation;
     public Sprite icon;
+    public int army_index = 0;
 
     [SerializeReference] public CreatureStats stats = new();
     [SerializeReference] public CreatureCosts costs = new();
@@ -43,7 +44,6 @@ public class CreatureCosts {
     public int mana_essence = 0;
     public int sacrificial_blood = 0;
 }
-
 
 public enum CreatureTier {
     tier_i,
