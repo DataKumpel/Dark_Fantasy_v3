@@ -24,9 +24,9 @@ public class Building : MonoBehaviour {
 
     public void EnterBuilding(Player player) {
         if(player == owner) {
-            Debug.Log($"You visited your building {gameObject.name}.");
+            print($"You visited your building {gameObject.name}.");
         } else {
-            Debug.Log($"You conquered the building {gameObject.name}!");
+            print($"You conquered the building {gameObject.name}!");
             
             // Remove this building from a players list of buildings, if owned:
             if(owner != null) {
